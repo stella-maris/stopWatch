@@ -17,10 +17,14 @@ class StopWatch extends Component {
         //gets call on page load (componentDidMount)
         //paused click event resumes
         //Changes button to "Pause" - switch that is on or off
+        this.setState({
+            isOn: true,
+            time: this.state.time,
+            start: Date.now() - this.state.time
+        })
         this.timer = setInterval(() => {
             this.setState({
-                time: this.state.time,
-                start: Date.now() - this.state.start
+                time: Date.now() - this.state.start
             });
 
         }, 1000);
@@ -47,7 +51,8 @@ class StopWatch extends Component {
         return (
             <div>
                 <p>{this.state.time}</p>
-                <button onClick={this.timerClick}>Pause</button>
+                <button onClick={this.startTimer}>Start</button>
+                <button onClick={this.stopTimer}>Stop</button>
             </div>
 
         );
