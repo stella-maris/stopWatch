@@ -19,12 +19,12 @@ class StopWatch extends Component {
         //Changes button to "Pause" - switch that is on or off
         this.setState({
             isOn: true,
-            time: this.state.time,
-            start: Date.now() - this.state.time
-        })
+            time: (this.state.time) / 1000,
+            start: Math.round((Date.now()/1000) - this.state.time)
+        });
         this.timer = setInterval(() => {
             this.setState({
-                time: Date.now() - this.state.start
+                time: Math.round((Date.now()/1000) - this.state.start)
             });
 
         }, 1000);
