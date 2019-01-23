@@ -40,12 +40,18 @@ class StopWatch extends Component {
         //Stops timer
         // Resets timer to zero
         //Changes button to "Start"
-        this.setState({time: 0});
+        this.stopTimer();
+        this.setState({
+            start: 0,
+            time: 0,
+            isOn: false
+        });
+
         console.log("reset");
     }
 
     componentDidMount() {
-
+        this.startTimer()
     }
     render () {
         return (
@@ -53,6 +59,7 @@ class StopWatch extends Component {
                 <p>{this.state.time}</p>
                 <button onClick={this.startTimer}>Start</button>
                 <button onClick={this.stopTimer}>Stop</button>
+                <button onClick={this.resetTimer}>Reset</button>
             </div>
 
         );
